@@ -1,20 +1,26 @@
 const theme = {
     colors: {
-      primary: '#0A2540',
-      background: '#F6F9FC',
+      primary: '#005F9D', // Un azul más corporativo
+      background: '#F8F9FA',
       contentBg: '#FFFFFF',
-      accent: '#00D9A6',
-      textPrimary: '#334155',
-      textSecondary: '#64748B',
-      borderColor: '#E2E8F0',
-      codeBg: '#1E293B',
+      accent: '#E67E22', // Naranja como acento
+      textPrimary: '#212529',
+      textSecondary: '#6C757D',
+      borderColor: '#DEE2E6',
+      codeBg: '#282C34', // Mantenemos el fondo oscuro para el código
     },
     header: {
         height: '65px',
     },
+    sidebar: {
+        width: '280px',
+    },
     shadows: {
-      sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-      md: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+      sm: '0 1px 3px rgba(0,0,0,0.1)',
+      md: '0 4px 6px rgba(0,0,0,0.1)',
+    },
+    typography: {
+        fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
     }
   };
   

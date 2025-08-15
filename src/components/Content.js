@@ -18,26 +18,27 @@ import Section14Extensibility from '../sections/Section14Extensibility';
 import Annex from '../sections/Annex';
 
 const ContentContainer = styled.main`
-  flex-grow: 1; /* Ocupa el espacio restante */
+  flex-grow: 1;
   padding: 2.5rem 4rem;
-  margin-left: 300px; /* Espacio para la sidebar en desktop */
+  margin-left: ${props => props.theme.sidebar.width};
+  width: 100%; /* Asegura que el contenedor intente ocupar el espacio */
 
   section {
     margin-bottom: 3.5rem;
-    padding-top: 70px; 
-    margin-top: -65px;
+    padding-top: calc(${props => props.theme.header.height} + 1rem); 
+    margin-top: calc(-${props => props.theme.header.height} - 1rem);
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 700;
     color: ${props => props.theme.colors.primary};
     margin-top: 0;
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
-    border-bottom: 2px solid ${props => props.theme.colors.borderColor};
-    padding-bottom: 0.5rem;
+    border-bottom: 3px solid ${props => props.theme.colors.borderColor};
+    padding-bottom: 0.75rem;
   }
 
   .section-number {
@@ -45,27 +46,27 @@ const ContentContainer = styled.main`
     align-items: center;
     justify-content: center;
     background-color: ${props => props.theme.colors.accent};
-    color: ${props => props.theme.colors.primary};
+    color: white;
     font-size: 1.5rem;
     border-radius: 8px;
-    min-width: 40px;
-    height: 40px;
+    min-width: 45px;
+    height: 45px;
     margin-right: 1rem;
   }
   
-  @media (max-width: 992px) {
-    margin-left: 0; /* Sin margen en móvil */
-    padding: 1.5rem 1rem;
+  @media (max-width: 1000px) {
+    margin-left: 0;
+    padding: 1.5rem 0; /* Eliminamos el padding lateral, ahora lo gestiona el body */
   }
 
   @media (max-width: 576px) {
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
     }
     .section-number {
-      min-width: 35px;
-      height: 35px;
-      font-size: 1.2rem;
+      min-width: 40px;
+      height: 40px;
+      font-size: 1.3rem;
     }
   }
 `;

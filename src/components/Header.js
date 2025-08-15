@@ -2,12 +2,12 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const HeaderContainer = styled.header`
-  background-color: ${props => props.theme.colors.primary};
+  background-color: #252525;
   color: white;
   padding: 0 2rem;
   box-shadow: ${props => props.theme.shadows.md};
   z-index: 1000;
-  position: fixed; /* Header fijo */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -18,8 +18,12 @@ const HeaderContainer = styled.header`
 
   h1 {
     margin: 0;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 600;
+  }
+
+  @media (max-width: 1000px) {
+    padding: 0 1rem; /* Alineamos el padding con el body */
   }
 `;
 
@@ -40,7 +44,7 @@ const HamburgerButton = styled.button`
     transition: all 0.3s ease-in-out;
   }
 
-  @media (max-width: 992px) {
+  @media (max-width: 1000px) {
     display: block;
   }
 `;

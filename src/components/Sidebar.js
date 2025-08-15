@@ -3,19 +3,19 @@ import styled from '@emotion/styled';
 
 const SidebarContainer = styled.aside`
   background-color: ${props => props.theme.colors.contentBg};
-  width: 300px;
-  flex-shrink: 0; /* Evita que se encoja */
+  width: ${props => props.theme.sidebar.width};
+  flex-shrink: 0;
   border-right: 1px solid ${props => props.theme.colors.borderColor};
   height: calc(100vh - ${props => props.theme.header.height});
-  position: fixed; /* Sidebar fija */
+  position: fixed;
   left: 0;
   top: ${props => props.theme.header.height};
   overflow-y: auto;
   transition: transform 0.3s ease-in-out;
   z-index: 900;
-  padding: 1.5rem;
+  padding: 1.5rem 0;
 
-  @media (max-width: 992px) {
+  @media (max-width: 1000px) {
     transform: translateX(${props => (props.isOpen ? '0' : '-100%')});
     box-shadow: ${props => props.theme.shadows.md};
   }
@@ -26,27 +26,41 @@ const NavGroup = styled.div`
 `;
 
 const GroupTitle = styled.h4`
-  color: ${props => props.theme.colors.primary};
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin: 0 0 0.5rem 1rem;
+  color: ${props => props.theme.colors.textSecondary};
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem 1.5rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
 `;
 
 const NavLink = styled.a`
     display: block;
-    padding: 0.6rem 1rem;
-    color: ${props => props.theme.colors.textSecondary};
+    padding: 0.6rem 1.5rem;
+    color: ${props => props.theme.colors.textPrimary};
     text-decoration: none;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    transition: all 0.2s ease-in-out;
+    font-size: 0.95rem;
+    position: relative;
+    transition: color 0.2s ease-in-out;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background-color: ${props => props.theme.colors.accent};
+      transform: scaleY(0);
+      transition: transform 0.2s ease-in-out;
+    }
 
     &:hover {
-      background-color: ${props => props.theme.colors.background};
       color: ${props => props.theme.colors.primary};
-      transform: translateX(5px);
+      background-color: #E9ECEF;
+      &::before {
+        transform: scaleY(1);
+      }
     }
 `;
 

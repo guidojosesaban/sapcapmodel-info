@@ -16,8 +16,8 @@ const Paragraph = styled.p`
   font-size: 1rem;
 `;
 const InfoBox = styled.div`
-  background-color: #E6F7FF;
-  border-left: 4px solid #1890FF;
+  background-color: #E9ECEF;
+  border-left: 4px solid ${props => props.theme.colors.primary};
   padding: 1rem 1.5rem;
   margin: 1.5rem 0;
   border-radius: 0 4px 4px 0;
@@ -47,13 +47,10 @@ const Section4CDS = () => {
 namespace sap.capire.incidents;
 using { cuid, managed } from '@sap/cds/common';
 
-// 'Incidents' es una ENTIDAD que hereda de los ASPECTOS 'cuid' y 'managed'
 entity Incidents: cuid, managed {
     title    : String(100);
-    // Una asociación es una relación a otra entidad independiente
     urgency  : Association to Urgency;
     status   : Association to Status;
-    // Una composición es una relación padre-hijo. Los mensajes no existen sin la incidencia.
     conversation : Composition of many {
         key ID   : UUID;
         author   : String;
