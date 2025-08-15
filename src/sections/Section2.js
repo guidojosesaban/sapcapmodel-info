@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import SAPCAPCharacteristics from '../assets/images/03.png'; 
 
 const SubHeading = styled.h3`
   font-size: 1.5rem;
@@ -35,7 +36,7 @@ const Section2 = () => {
             </Paragraph>
 
             <ImageContainer>
-                <img src="http://googleusercontent.com/file_content/1" alt="Ciclo de vida y principios de desarrollo en SAP CAP" />
+                <img src={SAPCAPCharacteristics} alt="Ciclo de vida y principios de desarrollo en SAP CAP" />
             </ImageContainer>
 
             <SubHeading>El Ciclo de Vida: Setup, Develop, Deploy, Operate</SubHeading>

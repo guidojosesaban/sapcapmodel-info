@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import SAPCAPIMG from '../assets/images/01.png'; // Assuming you have an image for the architecture
 
 const SubHeading = styled.h3`
   font-size: 1.5rem;
@@ -38,7 +39,7 @@ const Section1 = () => {
             </Paragraph>
 
             <ImageContainer>
-                <img src="http://googleusercontent.com/file_content/2" alt="Arquitectura de SAP Cloud Application Programming Model" />
+                <img src={SAPCAPIMG} alt="Arquitectura de SAP Cloud Application Programming Model" />
             </ImageContainer>
 
             <Paragraph>

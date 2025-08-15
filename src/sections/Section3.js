@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import SAPCAPIMGOVER from '../assets/images/02.png';
+import SAPCAPBESTPRACT from '../assets/images/04.png';  // Assuming you have an image for the architecture
 
 const SubHeading = styled.h3`
   font-size: 1.5rem;
@@ -28,7 +30,7 @@ const Section3 = () => {
             </Paragraph>
 
             <ImageContainer>
-                <img src="http://googleusercontent.com/file_content/3" alt="Resumen de características y cualidades de SAP CAP" />
+                <img src={SAPCAPIMGOVER} alt="Resumen de características y cualidades de SAP CAP" />
             </ImageContainer>
 
             <Paragraph>
@@ -41,7 +43,7 @@ const Section3 = () => {
             </Paragraph>
             
             <ImageContainer>
-                <img src="http://googleusercontent.com/file_content/0" alt="Mejores prácticas incorporadas en SAP CAP" />
+                <img src={SAPCAPBESTPRACT} alt="Mejores prácticas incorporadas en SAP CAP" />
             </ImageContainer>
             
             <Paragraph>
