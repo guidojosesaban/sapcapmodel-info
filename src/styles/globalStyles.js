@@ -24,6 +24,7 @@ const globalStyles = css`
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  text-align: justify;
   }
 
   ul {

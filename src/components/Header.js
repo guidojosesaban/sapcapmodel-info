@@ -58,7 +58,7 @@ const Header = ({ onMenuClick }) => {
         <span />
       </HamburgerButton>
 
-      <h1>Manual Definitivo de SAP CAP</h1>
+      <h1>SAP CAP</h1>
 
       <div style={{ width: '45px' }}></div> 
     </HeaderContainer>
