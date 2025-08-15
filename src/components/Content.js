@@ -1,31 +1,31 @@
 import React from 'react';
 import styled from '@emotion/styled';
+
 import Section1 from '../sections/Section1';
 import Section2 from '../sections/Section2';
 import Section3 from '../sections/Section3';
-import Section4 from '../sections/Section4';
-import Section5 from '../sections/Section5';
-import Section6 from '../sections/Section6';
-import Section7 from '../sections/Section7';
-import Section8 from '../sections/Section8';
-import Section9 from '../sections/Section9';
+import Section4CDS from '../sections/Section4CDS';
+import Section5Services from '../sections/Section5Services';
+import Section6BusinessLogic from '../sections/Section6BusinessLogic';
+import Section7Consuming from '../sections/Section7Consuming';
+import Section8Databases from '../sections/Section8Databases';
+import Section9Security from '../sections/Section9Security';
+import Section10Multitenancy from '../sections/Section10Multitenancy';
+import Section11Localization from '../sections/Section11Localization';
+import Section12Deployment from '../sections/Section12Deployment';
+import Section13Fiori from '../sections/Section13Fiori';
+import Section14Extensibility from '../sections/Section14Extensibility';
 import Annex from '../sections/Annex';
 
 const ContentContainer = styled.main`
-  flex: 1;
+  flex-grow: 1; /* Ocupa el espacio restante */
   padding: 2.5rem 4rem;
-  background-color: ${props => props.theme.colors.contentBg};
-  width: 100%; // Asegura que intente usar el espacio
-  
+  margin-left: 300px; /* Espacio para la sidebar en desktop */
+
   section {
     margin-bottom: 3.5rem;
-    padding-top: 85px; 
-    margin-top: -85px;
-  }
-
-  ol {
-    max-width: 100vw;
-    padding: 0 1.5rem;
+    padding-top: 70px; 
+    margin-top: -65px;
   }
 
   h2 {
@@ -36,6 +36,8 @@ const ContentContainer = styled.main`
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
+    border-bottom: 2px solid ${props => props.theme.colors.borderColor};
+    padding-bottom: 0.5rem;
   }
 
   .section-number {
@@ -51,15 +53,14 @@ const ContentContainer = styled.main`
     margin-right: 1rem;
   }
   
-  /* --- AJUSTE RESPONSIVE --- */
   @media (max-width: 992px) {
-    padding: 1.5rem 1.5rem; // Reducimos el padding en móvil
-    width: 100vw;
+    margin-left: 0; /* Sin margen en móvil */
+    padding: 1.5rem 1rem;
   }
 
   @media (max-width: 576px) {
     h2 {
-      font-size: 1.5rem; // Hacemos los títulos un poco más pequeños en móviles
+      font-size: 1.5rem;
     }
     .section-number {
       min-width: 35px;
@@ -75,12 +76,17 @@ const Content = () => {
       <Section1 />
       <Section2 />
       <Section3 />
-      <Section4 />
-      <Section5 />
-      <Section6 />
-      <Section7 />
-      <Section8 />
-      <Section9 />
+      <Section4CDS />
+      <Section5Services />
+      <Section6BusinessLogic />
+      <Section7Consuming />
+      <Section8Databases />
+      <Section9Security />
+      <Section10Multitenancy />
+      <Section11Localization />
+      <Section12Deployment />
+      <Section13Fiori />
+      <Section14Extensibility />
       <Annex />
     </ContentContainer>
   );

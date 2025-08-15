@@ -4,26 +4,27 @@ import styled from '@emotion/styled';
 const HeaderContainer = styled.header`
   background-color: ${props => props.theme.colors.primary};
   color: white;
-  padding: 1.25rem 2.5rem;
-  width: 100vw;
-  height: 4rem;
+  padding: 0 2rem;
   box-shadow: ${props => props.theme.shadows.md};
-  z-index: 1000; /* Aseguramos que esté por encima de todo */
-  position: sticky;
+  z-index: 1000;
+  position: fixed; /* Header fijo */
   top: 0;
+  left: 0;
+  width: 100%;
+  height: ${props => props.theme.header.height};
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   h1 {
     margin: 0;
-    font-size: 1.2rem; /* Ajustamos un poco el tamaño */
+    font-size: 1.3rem;
+    font-weight: 600;
   }
 `;
 
-// 1. Creamos el componente para el botón de hamburguesa
 const HamburgerButton = styled.button`
-  display: none; /* Oculto por defecto en desktop */
+  display: none;
   background: none;
   border: none;
   cursor: pointer;
@@ -39,26 +40,22 @@ const HamburgerButton = styled.button`
     transition: all 0.3s ease-in-out;
   }
 
-  /* 2. Hacemos visible el botón en pantallas pequeñas */
   @media (max-width: 992px) {
     display: block;
   }
 `;
 
-// 3. Recibimos 'onMenuClick' como prop
 const Header = ({ onMenuClick }) => {
   return (
     <HeaderContainer>
-      {/* 4. Añadimos el botón y le asignamos el evento onClick */}
       <HamburgerButton onClick={onMenuClick} aria-label="Abrir menú">
         <span />
         <span />
         <span />
       </HamburgerButton>
 
-      <h1>SAP CAP MODEL</h1>
+      <h1>Manual Definitivo de SAP CAP</h1>
 
-      {/* Un div vacío para ayudar a centrar el título si es necesario */}
       <div style={{ width: '45px' }}></div> 
     </HeaderContainer>
   );

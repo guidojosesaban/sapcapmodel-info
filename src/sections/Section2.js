@@ -1,118 +1,58 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import CodeSnippet from '../components/CodeSnippet';
 
 const SubHeading = styled.h3`
-  font-size: 1.5rem; color: ${props => props.theme.colors.primary}; margin-top: 2.5rem; margin-bottom: 1rem; border-bottom: 1px solid ${props => props.theme.colors.borderColor}; padding-bottom: 0.5rem;
+  font-size: 1.5rem;
+  color: ${props => props.theme.colors.primary};
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid ${props => props.theme.colors.borderColor};
+  padding-bottom: 0.5rem;
 `;
 const Paragraph = styled.p`
-  line-height: 1.7; color: ${props => props.theme.colors.textSecondary}; font-size: 1rem;
+  line-height: 1.7;
+  color: ${props => props.theme.colors.textSecondary};
+  font-size: 1rem;
 `;
-const FileStructure = styled.div`
-  background: ${props => props.theme.colors.codeBg}; color: #f8f8f2; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; font-family: 'Courier New', Courier, monospace;
-  pre { margin: 0; white-space: pre-wrap; }
+const ImageContainer = styled.div`
+  margin: 2rem 0;
+  img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: ${props => props.theme.shadows.md}; }
 `;
 const InfoBox = styled.div`
-  background-color: #E6F7FF; border-left: 4px solid #1890FF; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0;
+  background-color: #E6F7FF;
+  border-left: 4px solid #1890FF;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 4px 4px 0;
 `;
 
 const Section2 = () => {
     return (
         <section id="section-2">
-            <h2><span className="section-number">2</span>Anatomía de un Proyecto CAP</h2>
+            <h2><span className="section-number">2</span>Filosofía y Principios</h2>
             <Paragraph>
-                Un proyecto SAP CAP sigue el principio de <strong>"convención sobre configuración"</strong>. Esto significa que CAP asume una estructura estándar, lo que le permite descubrir y conectar automáticamente las diferentes partes de tu aplicación (modelo de datos, servicios, UI) con una configuración mínima.
-            </Paragraph>
-            
-            <SubHeading>Creación del Esqueleto del Proyecto</SubHeading>
-            <Paragraph>Para crear nuestro proyecto de ejemplo, `incident-management`, abrimos un terminal en SAP Business Application Studio (BAS) y ejecutamos los siguientes comandos:</Paragraph>
-            <CodeSnippet language="bash">
-                {`# Navega a tu carpeta de proyectos
-cd projects/
-# Inicializa un nuevo proyecto CAP. Crea la estructura y el package.json
-cds init incident-management
-# Entra en el directorio del nuevo proyecto
-cd incident-management
-# Instala las dependencias definidas en package.json
-npm install`}
-            </CodeSnippet>
-            <Paragraph>Este comando `cds init` crea un esqueleto de proyecto con la siguiente estructura:</Paragraph>
-            <FileStructure>
-                <pre>
-                    {`incident-management/
-├── app/          -> Capa de Presentación (UI)
-├── db/           -> Capa de Datos (Modelo de Dominio)
-├── srv/          -> Capa de Servicio (Lógica de API)
-└── package.json  -> Manifiesto del Proyecto`}
-                </pre>
-            </FileStructure>
-
-            <SubHeading>Capa de Datos: La Carpeta `db/`</SubHeading>
-            <Paragraph>
-                La carpeta `db/` es el hogar de tu modelo de dominio. Aquí defines la estructura de tus datos (entidades, propiedades, relaciones) usando el lenguaje <strong>Core Data Services (CDS)</strong>. Lo escribes una vez y CAP lo puede compilar para diferentes bases de datos como SQLite (desarrollo) o SAP HANA (producción).
+                CAP no es solo un conjunto de herramientas, sino una filosofía de desarrollo que busca maximizar la productividad y minimizar la complejidad. Esto se logra a través de un ciclo de vida claro y un conjunto de principios rectores.
             </Paragraph>
 
-            <SubHeading>Capa de Servicio: La Carpeta `srv/`</SubHeading>
+            <ImageContainer>
+                <img src="http://googleusercontent.com/file_content/1" alt="Ciclo de vida y principios de desarrollo en SAP CAP" />
+            </ImageContainer>
+
+            <SubHeading>El Ciclo de Vida: Setup, Develop, Deploy, Operate</SubHeading>
             <Paragraph>
-                La carpeta `srv/` define cómo se exponen los datos al mundo exterior, típicamente como APIs. CAP genera automáticamente servicios OData a partir de las definiciones de servicio que creas aquí. En esta carpeta también se implementa la lógica de negocio personalizada (validaciones, enriquecimientos) en archivos `.js`.
+                El desarrollo con CAP es un proceso rápido y ágil. El ciclo se puede resumir en cuatro fases principales, donde pasamos de la configuración a la operación en tiempos muy cortos.
             </Paragraph>
 
-            <SubHeading>Capa de Presentación: La Carpeta `app/`</SubHeading>
-            <Paragraph>
-                La carpeta `app/` contiene las aplicaciones de interfaz de usuario, que en el mundo SAP suelen ser aplicaciones Fiori. Una de las características más potentes de CAP es su sinergia con Fiori Elements, que puede generar UIs completas automáticamente basándose en "anotaciones" de UI que se añaden al servicio.
-            </Paragraph>
-
-            <SubHeading>El Corazón del Proyecto: `package.json`</SubHeading>
-            <Paragraph>
-                El archivo `package.json` es el manifiesto central de cualquier proyecto Node.js, y en CAP asume un rol aún más importante, ya que contiene la configuración principal del framework.
-            </Paragraph>
+            <SubHeading>Principios Clave del Desarrollo con CAP</SubHeading>
             <InfoBox>
-                <h4>Secciones Clave del `package.json`</h4>
                 <ul>
-                    <li><code>"name"</code> y <code>"version"</code>: Identifican tu proyecto.</li>
-                    <li><code>"dependencies"</code>: Paquetes de npm necesarios para que la aplicación se ejecute en producción (ej: `@sap/cds`, `@cap-js/hana`).</li>
-                    <li><code>"devDependencies"</code>: Paquetes necesarios solo para el desarrollo (ej: `@sap/cds-dk` para la CLI, `@cap-js/sqlite` para la BD local).</li>
-                    <li><code>"scripts"</code>: Atajos para comandos, como `"start": "cds-serve"` para iniciar el servidor.</li>
-                    <li><code>"cds"</code>: <strong>La sección más importante para CAP.</strong> Aquí se configura el comportamiento del runtime, como la base de datos a usar o el servicio de autenticación. A menudo usa perfiles como `[development]` y `[production]` para alternar la configuración según el entorno.</li>
+                    <li><strong>Trabajar en "Inner Loops":</strong> El objetivo es mantener ciclos de desarrollo muy cortos (de segundos) para probar cambios rápidamente. Esto se logra con comandos como `cds watch`, que reinicia el servidor automáticamente.</li>
+                    <li><strong>Convención sobre Configuración:</strong> CAP asume configuraciones estándar, lo que reduce la necesidad de archivos de configuración extensos. Solo se añade configuración cuando es estrictamente necesario (`cds add ...`).</li>
+                    <li><strong>Simulación (Mocking) de Servicios:</strong> Con `cds mock`, puedes simular servicios remotos y de plataforma, permitiéndote desarrollar toda tu aplicación de forma local sin dependencias externas.</li>
+                    <li><strong>Contratos y APIs Primero:</strong> El desarrollo se centra en definir primero los modelos de datos y las APIs. Esto permite el trabajo en paralelo entre equipos de backend y frontend.</li>
+                    <li><strong>Reutilizar, Componer y Extender:</strong> CAP fomenta la reutilización de componentes y la extensión de soluciones existentes, en lugar de empezar siempre desde cero.</li>
                 </ul>
             </InfoBox>
-            <CodeSnippet language="json">
-            {`{
-  "name": "incident-management",
-  "version": "1.0.0",
-  "description": "A simple CAP project.",
-  "dependencies": {
-    "@sap/cds": "^7",
-    "express": "^4",
-    "@cap-js/hana": "^1"
-  },
-  "devDependencies": {
-    "@sap/cds-dk": "^7",
-    "@cap-js/sqlite": "^1"
-  },
-  "scripts": {
-    "start": "cds-serve"
-  },
-  "cds": {
-    "requires": {
-      "db": {
-        "kind": "hana",
-        "[development]": {
-          "kind": "sqlite",
-          "credentials": {
-            "url": "db.sqlite"
-          }
-        }
-      },
-      "auth": {
-        "[production]": "xsuaa",
-        "[development]": "mocked"
-      }
-    }
-  }
-}`}
-            </CodeSnippet>
-            <Paragraph>Opcionalmente, para mantener el `package.json` más limpio, toda la sección `cds` se puede mover a un archivo separado llamado `.cdsrc.json` en la raíz del proyecto. Esto es especialmente útil en proyectos grandes.</Paragraph>
         </section>
     );
 };
