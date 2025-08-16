@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Content from './components/Content';
+import AudioPlayer from './components/AudioPlayer'; // 1. Importar el nuevo componente
 import globalStyles from './styles/globalStyles';
 import theme from './styles/theme';
 
@@ -21,22 +22,31 @@ const MainContainer = styled.div`
 
 function App() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  // 2. Añadir estado para el reproductor de audio
+  const [isAudioPlayerOpen, setAudioPlayerOpen] = useState(false);
 
-  const toggleSidebar = () => {
-    setSidebarOpen(!isSidebarOpen);
-  };
+  const toggleSidebar = () => setSidebarOpen(!isSidebarOpen);
+  const closeSidebar = () => setSidebarOpen(false);
 
-  const closeSidebar = () => {
-    setSidebarOpen(false);
-  };
+  // 3. Crear funciones para abrir y cerrar el reproductor
+  const openAudioPlayer = () => setAudioPlayerOpen(true);
+  const closeAudioPlayer = () => setAudioPlayerOpen(false);
 
   return (
     <ThemeProvider theme={theme}>
       <Global styles={globalStyles} />
+      {/* 4. Renderizar el reproductor de audio */}
+      <AudioPlayer isOpen={isAudioPlayerOpen} onClose={closeAudioPlayer} />
+      
       <AppContainer>
         <Header onMenuClick={toggleSidebar} />
         <MainContainer>
-          <Sidebar isOpen={isSidebarOpen} onLinkClick={closeSidebar} />
+          {/* 5. Pasar la función para abrir el reproductor al Sidebar */}
+          <Sidebar 
+            isOpen={isSidebarOpen} 
+            onLinkClick={closeSidebar} 
+            onOpenAudioPlayer={openAudioPlayer} 
+          />
           <Content />
         </MainContainer>
       </AppContainer>

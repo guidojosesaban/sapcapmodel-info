@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { FaHeadphonesAlt } from 'react-icons/fa';
 
 const SidebarContainer = styled.aside`
   background-color: ${props => props.theme.colors.contentBg};
@@ -26,12 +27,13 @@ const NavGroup = styled.div`
 `;
 
 const GroupTitle = styled.h4`
-  color: ${props => props.theme.colors.textSecondary};
-  font-size: 0.8rem;
+  color: #252525;
+  font-size: 1.25rem;
   font-weight: 700;
   margin: 0 0 0.75rem 1.5rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  border-bottom: 4px solid #003cffff;
 `;
 
 const NavLink = styled.a`
@@ -64,9 +66,38 @@ const NavLink = styled.a`
     }
 `;
 
-const Sidebar = ({ isOpen, onLinkClick }) => {
+const AudioButton = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: calc(100% - 3rem);
+  margin: 0 1.5rem;
+  padding: 0.75rem 1rem;
+  background-color: ${props => props.theme.colors.primary};
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #004c80;
+  }
+`;
+
+const Sidebar = ({ isOpen, onLinkClick, onOpenAudioPlayer }) => {
   return (
     <SidebarContainer isOpen={isOpen}>
+      <NavGroup>
+        <GroupTitle>Extras</GroupTitle>
+        <AudioButton onClick={onOpenAudioPlayer}>
+          <FaHeadphonesAlt />
+          Audioresumen
+        </AudioButton>
+      </NavGroup>
+
       <NavGroup>
         <GroupTitle>Fundamentos</GroupTitle>
         <ul>
