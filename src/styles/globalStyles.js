@@ -1,5 +1,9 @@
-import { Global, css } from '@emotion/react';
+import { css } from '@emotion/react';
 import theme from './theme';
+
+// Eliminamos la importación de 'Global' que no se usaba
+// const GlobalStyles = () => ( <Global styles={...} /> )
+// Ahora exportamos directamente el objeto css
 
 const globalStyles = css`
   @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap');
@@ -10,7 +14,7 @@ const globalStyles = css`
 
   body {
     margin: 0;
-   
+    font-family: ${theme.typography.fontFamily};
     background-color: ${theme.colors.background};
     color: ${theme.colors.textPrimary};
     -webkit-font-smoothing: antialiased;
@@ -20,11 +24,6 @@ const globalStyles = css`
 
   * {
     box-sizing: border-box;
-    font-family: "Space Grotesk", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  text-align: justify;
   }
 
   ul {
@@ -44,11 +43,9 @@ const globalStyles = css`
     }
   }
 
-  /* --- INICIO DE LA CORRECCIÓN PARA LISTAS --- */
-  /* Esta regla se aplica solo a las listas dentro del <main> (nuestro Content.js) */
   main ul, main ol {
-    list-style: revert; /* Restaura el estilo por defecto (viñetas/números) */
-    padding-left: 2rem; /* Añade el padding para la indentación */
+    list-style: revert;
+    padding-left: 2rem;
     margin-bottom: 1.5rem;
   }
 
@@ -58,7 +55,6 @@ const globalStyles = css`
     line-height: 1.7;
     color: ${theme.colors.textSecondary};
   }
-  /* --- FIN DE LA CORRECCIÓN --- */
 `;
 
 export default globalStyles;
