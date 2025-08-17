@@ -4,7 +4,8 @@ import styled from '@emotion/styled';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Content from './components/Content';
-import AudioPlayer from './components/AudioPlayer'; // 1. Importar el nuevo componente
+import AudioPlayer from './components/AudioPlayer';
+import CertificationModal from './components/CertificationModal'; // 1. Importar el nuevo componente
 import globalStyles from './styles/globalStyles';
 import theme from './styles/theme';
 
@@ -22,30 +23,36 @@ const MainContainer = styled.div`
 
 function App() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
-  // 2. Añadir estado para el reproductor de audio
   const [isAudioPlayerOpen, setAudioPlayerOpen] = useState(false);
+  // 2. Añadir estado para la modal de certificación
+  const [isCertModalOpen, setCertModalOpen] = useState(false);
 
   const toggleSidebar = () => setSidebarOpen(!isSidebarOpen);
   const closeSidebar = () => setSidebarOpen(false);
 
-  // 3. Crear funciones para abrir y cerrar el reproductor
   const openAudioPlayer = () => setAudioPlayerOpen(true);
   const closeAudioPlayer = () => setAudioPlayerOpen(false);
+
+  // 3. Crear funciones para la nueva modal
+  const openCertModal = () => setCertModalOpen(true);
+  const closeCertModal = () => setCertModalOpen(false);
 
   return (
     <ThemeProvider theme={theme}>
       <Global styles={globalStyles} />
-      {/* 4. Renderizar el reproductor de audio */}
       <AudioPlayer isOpen={isAudioPlayerOpen} onClose={closeAudioPlayer} />
+      {/* 4. Renderizar la nueva modal */}
+      <CertificationModal isOpen={isCertModalOpen} onClose={closeCertModal} />
       
       <AppContainer>
         <Header onMenuClick={toggleSidebar} />
         <MainContainer>
-          {/* 5. Pasar la función para abrir el reproductor al Sidebar */}
+          {/* 5. Pasar la función para abrir la modal al Sidebar */}
           <Sidebar 
             isOpen={isSidebarOpen} 
             onLinkClick={closeSidebar} 
-            onOpenAudioPlayer={openAudioPlayer} 
+            onOpenAudioPlayer={openAudioPlayer}
+            onOpenCertModal={openCertModal}
           />
           <Content />
         </MainContainer>

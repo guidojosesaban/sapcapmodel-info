@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { FaHeadphonesAlt } from 'react-icons/fa';
+import { FaHeadphonesAlt, FaCertificate } from 'react-icons/fa';
 
 const SidebarContainer = styled.aside`
   background-color: ${props => props.theme.colors.contentBg};
@@ -87,11 +87,36 @@ const AudioButton = styled.button`
   }
 `;
 
-const Sidebar = ({ isOpen, onLinkClick, onOpenAudioPlayer }) => {
+const ActionButton = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: calc(100% - 3rem);
+  margin: 0 1.5rem 0.5rem 1.5rem; /* Añadido margen inferior */
+  padding: 0.75rem 1rem;
+  background-color: ${props => props.theme.colors.primary};
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #004c80;
+  }
+`;
+
+const Sidebar = ({ isOpen, onLinkClick, onOpenAudioPlayer, onOpenCertModal }) => {
   return (
     <SidebarContainer isOpen={isOpen}>
       <NavGroup>
         <GroupTitle>Extras</GroupTitle>
+             <ActionButton onClick={onOpenCertModal}>
+          <FaCertificate />
+          Info. Certificación
+        </ActionButton>
         <AudioButton onClick={onOpenAudioPlayer}>
           <FaHeadphonesAlt />
           Audioresumen

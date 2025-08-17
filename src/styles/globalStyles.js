@@ -14,7 +14,7 @@ const globalStyles = css`
 
   body {
     margin: 0;
-    font-family: ${theme.typography.fontFamily};
+    font-family: 'Space Grotesk';
     background-color: ${theme.colors.background};
     color: ${theme.colors.textPrimary};
     -webkit-font-smoothing: antialiased;
@@ -24,6 +24,9 @@ const globalStyles = css`
 
   * {
     box-sizing: border-box;
+       font-family: 'Space Grotesk';
+       font-weight: 400;
+       
   }
 
   ul {
